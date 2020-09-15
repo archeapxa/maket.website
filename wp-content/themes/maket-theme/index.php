@@ -104,8 +104,7 @@
 						<div class="col-12 col-lg-7 col-xl-7">
 							<div class="advantages">
 								<div class="advantages-title">
-									<h1>Все материалы для макетирования
-									по низкой цене и в наличии в Москве</h1>
+									<h1><?php the_title(); ?></h1>
 								</div>
 								<!-- /.advantages-title -->
 								<div class="advantages-subtitle">
@@ -118,36 +117,33 @@
 									<div class="col-12 col-md-6">
 										<div class="advantages-block">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-1.png" alt="">
+												<img src="<?php the_field('advantage_1_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												На рынке макетирования
-												более 5 лет!
+												<?php echo the_field('advantage_1', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
 										<!-- /.advantages-block -->
 										<div class="advantages-block">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-2.png" alt="">
+												<img src="<?php the_field('advantage_2_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												Профессиональный подбор
-												необходимого материала
+												<?php echo the_field('advantage_2', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
 										<!-- /.advantages-block -->
 										<div class="advantages-block">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-3.png" alt="">
+												<img src="<?php the_field('advantage_3_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												Дополнительные скидки
-												студентам
+												<?php echo the_field('advantage_3', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
@@ -157,36 +153,33 @@
 									<div class="col-12 col-md-6">
 										<div class="advantages-block">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-4.png" alt="">
+												<img src="<?php the_field('advantage_4_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												Каждый материал имеет
-												сертификат качества
+												<?php echo the_field('advantage_4', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
 										<!-- /.advantages-block -->
 										<div class="advantages-block">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-5.png" alt="">
+												<img src="<?php the_field('advantage_5_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												Доставка по Москве
-												в день обращения
+												<?php echo the_field('advantage_5', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
 										<!-- /.advantages-block -->
 										<div class="advantages-block advantages-block_last">
 											<div class="advantages-block__img">
-												<img src="<?php echo get_template_directory_uri();?>/img/main/img-6.png" alt="">
+												<img src="<?php the_field('advantage_6_image', 2)?>" alt="">
 											</div>
 											<!-- /.advantages-block__img -->
 											<div class="advantages-block__text">
-												Быстрая доставка
-												в регионы
+												<?php echo the_field('advantage_6', 2);?>
 											</div>
 											<!-- /.advantages-block__text -->
 										</div>
@@ -628,7 +621,7 @@
 			<section class="section-slider manual" id="manual">
 				<div class="section-title manual-section-title">
 					<h2>
-						Как заказать?
+						<?php the_field('section_header', 2)?>
 					</h2>
 				</div>
 				<!-- /.section-title -->
@@ -637,14 +630,13 @@
 						<div class="col-12 col-lg-3">
 							<div class="manual-block">
 								<div class="manual-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/manual/manual-img-1.png" alt="">
+									<img src="<?php the_field('step_image_1', 2)?>" alt="">
 								</div>
 								<!-- /.manual-img -->
 								<div class="manual-block__text">
-									Позвонить/оставить запрос 
-									на обратный звонок
+									<?php the_field('step_text_1', 2)?>
 									<div class="manual-block__text_order  show-order">
-										Заполнить форму заказа
+										<?php the_field('step_button_1', 2)?>
 									</div>
 								</div>
 								<!-- /.manual-text -->
@@ -656,13 +648,11 @@
 						<div class="col-12 col-lg-3">
 							<div class="manual-block">
 								<div class="manual-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/manual/manual-img-2.png" alt="">
+									<img src="<?php the_field('step_image_2', 2)?>" alt="">
 								</div>
 								<!-- /.manual-img -->
 								<div class="manual-block__text">
-									Вам перезвонит
-									наш менеджер и уточнит
-									наличие товара
+									<?php the_field('step_text_2', 2)?>
 								</div>
 								<!-- /.manual-text -->
 							</div>
@@ -673,14 +663,13 @@
 						<div class="col-12 col-lg-3">
 							<div class="manual-block">
 								<div class="manual-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/manual/manual-img-3.png" alt="">
+									<img src="<?php the_field('step_image_3', 2)?>" alt="">
 								</div>
 								<!-- /.manual-img -->
 								<div class="manual-block__text">
-									Согласовать доставку
-									или самовывоз
+									<?php the_field('step_text_3', 2)?>
 									<div class="manual-block__text_order  show-order">
-										Подробнее о доставке
+										<?php the_field('step_button_3', 2)?>
 									</div>
 								</div>
 								<!-- /.manual-text -->
@@ -692,12 +681,11 @@
 						<div class="col-12 col-lg-3">
 							<div class="manual-block manual-block_last">
 								<div class="manual-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/manual/manual-img-4.png" alt="">
+									<img src="<?php the_field('step_image_4', 2)?>" alt="">
 								</div>
 								<!-- /.manual-img -->
 								<div class="manual-block__text">
-									Получить товар
-									и приятные эмоции
+									<?php the_field('step_text_field_4', 2)?>
 								</div>
 								<!-- /.manual-text -->
 							</div>
@@ -716,7 +704,7 @@
 		<section class="section-slider delivery" id="delivery">
 			<div class="section-title delivery-section-title">
 				<h2>
-					Доставка
+					<?php the_field('delivery_header', 2)?>
 				</h2>
 			</div>
 			<!-- /.section-title -->
@@ -725,12 +713,11 @@
 					<div class="col-12 col-md-6 col-xl-3">
 						<div class="delivery-block">
 							<div class="delivery-block__img">
-								<img src="<?php echo get_template_directory_uri();?>/img/delivery/delivery-img-1.png" alt="">
+								<img src="<?php the_field('delivery_icon_1', 2)?>" alt="">
 							</div>
 							<!-- /.delivery-block__img -->
 							<div class="delivery-block__text">
-								Доставка в пределах МКАД
-								от 3000 руб. <span>бесплатно</span>
+								<?php the_field('delivery_text_1', 2)?>
 							</div>
 							<!-- /.delivery-block__text -->
 						</div>
@@ -740,12 +727,11 @@
 					<div class="col-12 col-md-6 col-xl-3">
 						<div class="delivery-block">
 							<div class="delivery-block__img">
-								<img src="<?php echo get_template_directory_uri();?>/img/delivery/delivery-img-2.png" alt="">
+								<img src="<?php the_field('delivery_icon_2', 2)?>" alt="">
 							</div>
 							<!-- /.delivery-block__img -->
 							<div class="delivery-block__text">
-								Доставка <span>300 руб.</span> при заказе
-								менее 3000 руб.
+								<?php the_field('delivery_text_2', 2)?>
 							</div>
 							<!-- /.delivery-block__text -->
 						</div>
@@ -755,12 +741,11 @@
 					<div class="col-12 col-md-6 col-xl-3">
 						<div class="delivery-block delivery-block_last1">
 							<div class="delivery-block__img">
-								<img src="<?php echo get_template_directory_uri();?>/img/delivery/delivery-img-3.png" alt="">
+								<img src="<?php the_field('delivery_icon_3', 2)?>" alt="">
 							</div>
 							<!-- /.delivery-block__img -->
 							<div class="delivery-block__text">
-								<span>Доставка в регионы</span> любой
-								удобной транспортной компанией
+								<?php the_field('delivery_text_3', 2)?>
 							</div>
 							<!-- /.delivery-block__text -->
 						</div>
@@ -770,12 +755,11 @@
 					<div class="col-12 col-md-6 col-xl-3">
 						<div class="delivery-block delivery-block_last2">
 							<div class="delivery-block__img">
-								<img src="<?php echo get_template_directory_uri();?>/img/delivery/delivery-img-4.png" alt="">
+								<img src="<?php the_field('delivery_icon_4', 2)?>" alt="">
 							</div>
 							<!-- /.delivery-block__img -->
 							<div class="delivery-block__text">
-								<span>Самовывоз:</span> <br>
-								Автомоторная 4а стр 21.
+								<?php the_field('delivery_text_4', 2)?>
 							</div>
 							<!-- /.delivery-block__text -->
 						</div>
@@ -796,11 +780,11 @@
 						<div class="col-12 col-md-3">
 							<div class="contacts-block">
 								<div class="contacts-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/contacts/contacts-mail.png" alt="">
+									<img src="<?php	echo get_field('contacts_icon_1', 2)['url'];?>" alt="<?php echo get_field('contacts_icon_1', 2)['alt']?>">
 								</div>
 								<!-- /.contacts-block__img -->
 								<div class="contacts-block__text">
-									<a href="mailto:storent@maketstorent.ru">storent@maketstorent.ru</a>
+									<a href="mailto:<?php the_field('contact_1', 2)?>"><?php the_field('contact_1', 2)?></a>
 								</div>
 								<!-- /.contacts-block__text -->
 							</div>
@@ -810,11 +794,11 @@
 						<div class="col-12 col-md-3">
 							<div class="contacts-block">
 								<div class="contacts-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/contacts/contacts-phone.png" alt="">
+									<img src="<?php the_field('contacts_icon_2', 2)?>" alt="">
 								</div>
 								<!-- /.contacts-block__img -->
 								<div class="contacts-block__text">
-									<a href="tel:+7(495)008-55-77">+7 (495) 008-55-77</a>
+									<a href="tel:<?php the_field('contact_2', 2)?>"><?php the_field('contact_2', 2)?></a>
 								</div>
 								<!-- /.contacts-block__text -->
 							</div>
@@ -824,11 +808,11 @@
 						<div class="col-12 col-md-3">
 							<div class="contacts-block contacts-block_last">
 								<div class="contacts-block__img">
-									<img src="<?php echo get_template_directory_uri();?>/img/contacts/contacts-clock.png" alt="">
+									<img src="<?php the_field('contacts_icon_3', 2)?>" alt="">
 								</div>
 								<!-- /.contacts-block__img -->
 								<div class="contacts-block__text">
-									пн-вс с 10-00 до 22-00
+									<?php the_field('contact_3', 2)?>
 								</div>
 								<!-- /.contacts-block__text -->
 							</div>
