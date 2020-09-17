@@ -196,24 +196,25 @@
 						<!-- /.col-8 -->
 										<!-- Форма на главной секции -->
 						<div class="col-12 col-md-10 col-lg-5 col-xl-4">
-							<form action="mailer/smart.php" method="POST" class="form">
-								<div class="form-main">
+							<!-- <form action="mailer/smart.php" method="POST" class="form"> -->
+								<div class="form-main form">
 									<div class="form-title">
 										Закажите макетные материалы 
 										прямо сейчас
 									</div>
 									<!-- /.form-title -->
-									<input type="text" name="user_name" class="form-input" placeholder="Ваше имя" required>
+									<!-- <input type="text" name="user_name" class="form-input" placeholder="Ваше имя" required>
 									<input type="tel" name="user_phone" class="form-input input-phone" placeholder="Контактный телефон" required>
 									<textarea name="user_text" class="form-input form-textarea" placeholder="Какие материалы вам требуются?" cols="20" rows="3" required></textarea>
-									<button class="form-button" type="submit">Оставить заявку</button>
+									<button class="form-button" type="submit">Оставить заявку</button> -->
+									<?php echo do_shortcode( '[contact-form-7 id="163" title="main-form"]');?>
 									<div class="form-small">
 										Нажимая на кнопку оставить заявку
 										вы соглашаетесь с <div class="show-politic">политикой обработки данных</div>
 									</div>
 									<!-- /.small -->
 								</div>
-							</form>
+							<!-- </form> -->
 							<!-- /.form -->
 						</div>
 						<!-- /.col-4 -->
@@ -237,101 +238,47 @@
 				<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-img.png" class="materials-img lego-img" alt="">
 			<!-- Слайдер в секции -->
 				<div class="slider">
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-slide-1/slide-1-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Пенопласт
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 500 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-slide-2/slide-2-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Пенокартон
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 100 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							ПВХ
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-slide-4/slide-4-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Полистирол
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 400 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-								<div class="slider-block__button_img"></div>
-								<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/materials/materials-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							ПВХ
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
+					<?php
+						global $post;
+
+						$myposts = get_posts([ 
+							'numberposts' => 10,
+							'category_name' => 'materials'
+						]);
+
+						if( $myposts ){
+							foreach( $myposts as $post ){
+								setup_postdata( $post );
+								?>
+								<!-- Вывода постов, функции цикла: the_title() и т.д. -->
+								<div class="slider-block">
+									<div class="slider-block__img">
+										<img src="<?php the_field('slide_image')?>" alt="<?php the_title() ?>">
+									</div>
+									<!-- /.slider-slider__img -->
+									<div class="slider-block__name">
+										<?php the_title() ?>
+									</div>
+									<!-- /.slider-name -->
+									<div class="slider-block__price">
+										<?php the_field('slide_price')?>
+									</div>
+									<!-- /.slider-price -->
+									<a class="slider-block__button">
+										<div class="slider-block__button_img"></div>
+										<div class="slider-block__button_text">Купить</div>
+									</a>
+								</div>
+								<!-- /.slider-block -->
+								<?php 
+							}
+						} else {
+							// Постов не найдено
+						}
+
+						wp_reset_postdata(); // Сбрасываем $post
+						?>
+
 				</div>
 				<!-- /.slider -->
 			</div>
@@ -350,103 +297,46 @@
 				<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-img.png" class="tools-img lego-img" alt="">
 			<!-- Слайдер в секции -->
 				<div class="slider">
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-slide-1/slide-1-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Резак 18 мм
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 500 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
+					<?php
+						global $post;
 
+						$myposts = get_posts([ 
+							'numberposts' => 10,
+							'category_name' => 'instruments'
+						]);
 
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-slide-2/slide-2-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Реказ 9 мм
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 100 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Коврик для резки
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-slide-4/slide-4-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Линейка
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 400 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/tools/tools-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Коврик для резки
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
+						if( $myposts ){
+							foreach( $myposts as $post ){
+								setup_postdata( $post );
+								?>
+								<!-- Вывода постов, функции цикла: the_title() и т.д. -->
+								<div class="slider-block">
+									<div class="slider-block__img">
+										<img src="<?php the_field('slide_image')?>" alt="<?php the_title() ?>">
+									</div>
+									<!-- /.slider-slider__img -->
+									<div class="slider-block__name">
+										<?php the_title() ?>
+									</div>
+									<!-- /.slider-name -->
+									<div class="slider-block__price">
+										<?php the_field('slide_price')?>
+									</div>
+									<!-- /.slider-price -->
+									<a class="slider-block__button">
+										<div class="slider-block__button_img"></div>
+										<div class="slider-block__button_text">Купить</div>
+									</a>
+								</div>
+								<!-- /.slider-block -->
+								<?php 
+							}
+						} else {
+							// Постов не найдено
+						}
+
+						wp_reset_postdata(); // Сбрасываем $post
+						?>
 				</div>
 				<!-- /.slider -->
 			</div>
@@ -465,106 +355,46 @@
 				<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-img.png" class="prototyping-img lego-img" alt="">
 			<!-- Слайдер в секции -->
 				<div class="slider">
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-slide-1/slide-1-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Модели людей масштаб 1:50, 
-							1:87, 1:100, 1:150, 1:200
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 500 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-slide-2/slide-2-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Модели авто масштаб 1:50,
-							1:87, 1:100, 1:150, 1:200
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 100 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Модели деревьев масштаб 1:50,
-							1:87, 1:100, 1:150, 1:200
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-slide-4/slide-4-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Модели фонарей масштаб 1:50,
-							1:87, 1:100, 1:150, 1:200
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 400 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
-					<div class="slider-block">
-						<div class="slider-block__img">
-							<img src="<?php echo get_template_directory_uri();?>/img/prototyping/prototyping-slide-3/slide-3-1img.png" alt="">
-						</div>
-						<!-- /.slider-slider__img -->
-						<div class="slider-block__name">
-							Модели деревьев масштаб 1:50,
-							1:87, 1:100, 1:150, 1:200
-						</div>
-						<!-- /.slider-name -->
-						<div class="slider-block__price">
-							от 350 руб.
-						</div>
-						<!-- /.slider-price -->
-						<a class="slider-block__button">
-							<div class="slider-block__button_img"></div>
-							<div class="slider-block__button_text">Купить</div>
-						</a>
-					</div>
-					<!-- /.slider-block -->
+					<?php
+						global $post;
+
+						$myposts = get_posts([ 
+							'numberposts' => 10,
+							'category_name' => 'maket_making'
+						]);
+
+						if( $myposts ){
+							foreach( $myposts as $post ){
+								setup_postdata( $post );
+								?>
+								<!-- Вывода постов, функции цикла: the_title() и т.д. -->
+								<div class="slider-block">
+									<div class="slider-block__img">
+										<img src="<?php the_field('slide_image')?>" alt="<?php the_title() ?>">
+									</div>
+									<!-- /.slider-slider__img -->
+									<div class="slider-block__name">
+										<?php the_title() ?>
+									</div>
+									<!-- /.slider-name -->
+									<div class="slider-block__price">
+										<?php the_field('slide_price')?>
+									</div>
+									<!-- /.slider-price -->
+									<a class="slider-block__button">
+										<div class="slider-block__button_img"></div>
+										<div class="slider-block__button_text">Купить</div>
+									</a>
+								</div>
+								<!-- /.slider-block -->
+								<?php 
+							}
+						} else {
+							// Постов не найдено
+						}
+
+						wp_reset_postdata(); // Сбрасываем $post
+						?>
 				</div>
 				<!-- /.slider -->
 			</div>
@@ -580,13 +410,13 @@
 			</div>
 			<!-- /.section-title -->
 			<div class="container">
-				<form action="mailer/smart.php" method="POST" class="form form-order">
-					<div class="form-main form-main_order">
+				<!-- <form action="mailer/smart.php" method="POST" class="form form-order"> -->
+					<div class="form-main form-main_order form">
 						<div class="form-title form-order-title">
 							Оставьте заявку и мы подберем Вам необходимые для Вас материалы
 						</div>
 						<!-- /.form-title -->
-						<div class="form-order_block">
+						<!-- <div class="form-order_block">
 							<div class="row justify-content-center">
 								<div class="col-12 col-lg-4 col-xl-3">
 									<input type="text" name="user_name" class="form-input form-order-input wow fadeInDown"  placeholder="Ваше имя" required>
@@ -601,8 +431,9 @@
 									<button class="form-button form-order-button wow fadeInDown" data-wow-delay="0.6s">Оставить заявку</button>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						<!-- /.form-block -->
+						<?php echo do_shortcode( '[contact-form-7 id="170" title="horizontal-form"]');?>
 						<div class="form-small form-order-small">
 							Нажимая на кнопку оставить заявку
 							вы соглашаетесь с <div class="show-politic">политикой обработки данных</div>
@@ -610,7 +441,7 @@
 						<!-- /.form-small -->
 					</div>
 					<!-- /.form-main form-order -->
-				</form>
+				<!-- </form> -->
 				<!-- /.form -->
 			</div>
 			<!-- /.container -->
@@ -901,25 +732,26 @@
 		<!-- /.footer-bg -->
 			<div class="overlay animated fadeIn">
 				<div class="popup">
-					<form action="mailer/smart.php" method="POST" class="form form-popup">
+					<!-- <form action="mailer/smart.php" method="POST" class="form form-popup"> -->
 						<div class="popup_close">&#10005;</div>
-						<div class="form-main">
+						<div class="form-main form">
 							<div class="form-title">
 								Закажите макетные материалы 
 								прямо сейчас
 							</div>
 							<!-- /.form-title -->
-							<input type="text" name="user_name" class="form-input" placeholder="Ваше имя" required>
+							<!-- <input type="text" name="user_name" class="form-input" placeholder="Ваше имя" required>
 							<input type="tel" name="user_phone" id="phone1" class="form-input input-phone" placeholder="Контактный телефон" required>
 							<textarea name="user_text" class="form-input form-textarea" placeholder="Какие материалы вам требуются?" cols="20" rows="3" required></textarea>
-							<button class="form-button" type="submit">Оставить заявку</button>
+							<button class="form-button" type="submit">Оставить заявку</button> -->
+							<?php echo do_shortcode( '[contact-form-7 id="163" title="main-form"]');?>
 							<div class="form-small">
 								Нажимая на кнопку оставить заявку
 								вы соглашаетесь с <div class="show-politic">политикой обработки данных</div>
 							</div>
 							<!-- /.small -->
 						</div>
-					</form>
+					<!-- </form> -->
 					<!-- /.form -->
 				</div>
 			</div>

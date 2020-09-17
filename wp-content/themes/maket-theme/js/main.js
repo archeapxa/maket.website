@@ -138,25 +138,23 @@ $(document).ready(function () {
   });
 });
 
-$('form').submit(function (event) {
-  event.preventDefault();
-  $.ajax({
-    type: "POST",
-    url: "mailer/smart.php",
-    data: $(this).serialize()
-  }).done(function () {
-    $(this).find("input").val("");
-    $('.overlay').hide()
-    $('.overlay-message').show()
-    setTimeout(function () {
-      $(".overlay-message").hide();
-    }, 3000);
-    $("form").trigger("reset");
-  });
-  return false;
-});
+// $('form').submit(function (event) {
+//   event.preventDefault();
+//   $.ajax({
+//     type: "POST",
+//     url: "mailer/smart.php",
+//     data: $(this).serialize()
+//   }).done(function () {
+//     $(this).find("input").val("");
+//     $('.overlay').hide()
+//     $('.overlay-message').show()
+//     setTimeout(function () {
+//       $(".overlay-message").hide();
+//     }, 3000);
+//     $("form").trigger("reset");
+//   });
+//   return false;
+// });
 $(document).ready(function () {
-
+  new WOW().init();
 });
-
-new WOW().init();
