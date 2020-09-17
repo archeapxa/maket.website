@@ -691,10 +691,10 @@ button {
 .order-section-title h2 {
   margin-bottom: 66px;
 }
-
+/* 
 .form-main_order {
-  /* padding: 0; */
-}
+  padding: 0; */
+/* } */
 
 .form-order {
   background: transparent;
