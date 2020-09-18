@@ -19,3 +19,11 @@ wp_enqueue_script( 'slick', get_template_directory_uri() . "/slick/slick.min.js"
 wp_enqueue_script( 'maskedInput', get_template_directory_uri() . "/js/jquery.maskedinput.min.js", 'jquery', null, true );
 wp_enqueue_script( 'wow', get_template_directory_uri() . "/js/wow.min.js", null , null, true );
 wp_enqueue_script( 'main', get_template_directory_uri() . "/js/main.js", null , null, true );
+
+add_theme_support( 'custom-logo', [
+	'height'      => 73,
+	'width'       => 94,
+	'flex-width'  => false,
+	'flex-height' => false,
+	'header-text' => '',
+] );
